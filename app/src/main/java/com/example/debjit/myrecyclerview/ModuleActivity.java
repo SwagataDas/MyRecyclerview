@@ -6,7 +6,7 @@ public class ModuleActivity {
         private int Image;
 
         //constructor for creating object with resources
-        public ModuleActivity(String image, String text){
+        public ModuleActivity(int image, String text){
             this.Image = image;
             this.text = text;
         }

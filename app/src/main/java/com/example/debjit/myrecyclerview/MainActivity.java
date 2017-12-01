@@ -31,12 +31,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void addItemsToArrayList() {
-        moduleActivities.add(new ModuleActivity("orange", "Orange"));
-        moduleActivities.add(new ModuleActivity("strawberry", "Strawberry"));
-        moduleActivities.add(new ModuleActivity("banana", "Banana"));
-        moduleActivities.add(new ModuleActivity("lichi", "Lichi"));
-        moduleActivities.add(new ModuleActivity("mango", "Mango"));
-        moduleActivities.add(new ModuleActivity("peach", "Peach"));
+        moduleActivities.add(new ModuleActivity(R.drawable.orange, "Orange"));
+        moduleActivities.add(new ModuleActivity(R.drawable.strawberry, "Strawberry"));
+        moduleActivities.add(new ModuleActivity(R.drawable.banana, "Banana"));
+        moduleActivities.add(new ModuleActivity(R.drawable.lichi, "Lichi"));
+        moduleActivities.add(new ModuleActivity(R.drawable.mango, "Mango"));
+        moduleActivities.add(new ModuleActivity(R.drawable.peach, "Peach"));
     }
 
     private class MyRecyclerAdapter extends RecyclerView.Adapter<MyViewHolder> {
@@ -49,6 +49,8 @@ public class MainActivity extends AppCompatActivity {
             this.moduleActivities = moduleActivities;
         }
 
+
+
         @Override
         public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             final ImageView imageView;
@@ -56,6 +58,9 @@ public class MainActivity extends AppCompatActivity {
             final View view;
             //inflate for new view
             View rootView = getLayoutInflater().inflate(R.layout.activity_module, parent, false);
+            imageView = rootView.findViewById(R.id.imageview_child_id);
+            textView = rootView.findViewById(R.id.textview_child_id);
+            view = rootView;
             return new MyViewHolder(rootView);              //return the view holder object to be used in the onBindViewHolder method
         }
 
@@ -71,8 +76,6 @@ public class MainActivity extends AppCompatActivity {
         public int getItemCount() {
             return moduleActivities.size();
         }
-
-
     }
 
     private class MyViewHolder extends RecyclerView.ViewHolder {
@@ -81,7 +84,9 @@ public class MainActivity extends AppCompatActivity {
         private final TextView textView;
         private final View view;
 
-        MyViewHolder(View rootView) {
+
+        public MyViewHolder(View rootView) {
+            super(rootView);
             imageView = rootView.findViewById(R.id.imageview_child_id);
             textView = rootView.findViewById(R.id.textview_child_id);
             view = rootView;
