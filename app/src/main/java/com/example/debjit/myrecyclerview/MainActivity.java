@@ -7,7 +7,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -31,12 +30,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void addItemsToArrayList() {
-        moduleActivities.add(new ModuleActivity(R.drawable.orange, "Orange"));
-        moduleActivities.add(new ModuleActivity(R.drawable.strawberry, "Strawberry"));
-        moduleActivities.add(new ModuleActivity(R.drawable.banana, "Banana"));
-        moduleActivities.add(new ModuleActivity(R.drawable.lichi, "Lichi"));
-        moduleActivities.add(new ModuleActivity(R.drawable.mango, "Mango"));
-        moduleActivities.add(new ModuleActivity(R.drawable.peach, "Peach"));
+        moduleActivities.add(new ModuleActivity(R.drawable.banana, "Orange"));
+        moduleActivities.add(new ModuleActivity(R.drawable.lichi, "Strawberry"));
+        moduleActivities.add(new ModuleActivity(R.drawable.mango, "Banana"));
+        moduleActivities.add(new ModuleActivity(R.drawable.orange, "Lichi"));
+        moduleActivities.add(new ModuleActivity(R.drawable.peach, "Mango"));
+        moduleActivities.add(new ModuleActivity(R.drawable.strawberry, "Peach"));
     }
 
     private class MyRecyclerAdapter extends RecyclerView.Adapter<MyViewHolder> {
@@ -63,14 +62,13 @@ public class MainActivity extends AppCompatActivity {
             view = rootView;
             return new MyViewHolder(rootView);              //return the view holder object to be used in the onBindViewHolder method
         }
-
         @Override
         public void onBindViewHolder(MyViewHolder holder, int position) {
             //get the corresponding student pojo object for a given position
             ModuleActivity moduleActivity = moduleActivities.get(position);
             //update views values
             holder.textView.setText(moduleActivity.getText());
-
+            holder.imageView.setImageResource(moduleActivity.getImage());
         }
         @Override
         public int getItemCount() {
