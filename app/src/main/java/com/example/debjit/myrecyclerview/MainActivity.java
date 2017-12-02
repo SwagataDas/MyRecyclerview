@@ -14,8 +14,9 @@ import java.util.ArrayList;
 import static android.os.Build.VERSION_CODES.M;
 
 public class MainActivity extends AppCompatActivity {
-    private String[] textList = {"Orange", "Strawberry", "Banana", "Lichi", "Mango", "Peach"};
-    private int[] imageList = {R.drawable.orange, R.drawable.strawberry, R.drawable.banana, R.drawable.lichi, R.drawable.mango, R.drawable.peach};
+    private String[] textList = {"Orange", "Strawberry", "Guava", "Lichi", "Mango", "Peach"};
+    private String[] descriptionList = {"Description of the Orange Fruit.", "The garden strawberry is a widely grown hybrid species of the genus Fragaria.", "Guavas are rich in dietary fiber and vitamin C.", "Lychee in the soapberry family, Sapindaceae.", "Mangoes are juicy stone fruit from numerous species of tropical trees belonging to the flowering plant genus Mangifera.", "Though fuzzy peaches and nectarines are regarded commercially as different fruits." };
+    private int[] imageList = {R.drawable.orange, R.drawable.strawberry, R.drawable.guava, R.drawable.lichi, R.drawable.mango, R.drawable.peach};
     private ArrayList<ModuleActivity> moduleActivities = new ArrayList<>();
 
     @Override
@@ -30,12 +31,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void addItemsToArrayList() {
-        moduleActivities.add(new ModuleActivity(R.drawable.banana, "Orange"));
-        moduleActivities.add(new ModuleActivity(R.drawable.lichi, "Strawberry"));
-        moduleActivities.add(new ModuleActivity(R.drawable.mango, "Banana"));
-        moduleActivities.add(new ModuleActivity(R.drawable.orange, "Lichi"));
-        moduleActivities.add(new ModuleActivity(R.drawable.peach, "Mango"));
-        moduleActivities.add(new ModuleActivity(R.drawable.strawberry, "Peach"));
+        moduleActivities.add(new ModuleActivity(R.drawable.orange, "Orange"));
+        moduleActivities.add(new ModuleActivity(R.drawable.strawberry, "Strawberry"));
+        moduleActivities.add(new ModuleActivity(R.drawable.guava, "Guava"));
+        moduleActivities.add(new ModuleActivity(R.drawable.lichi, "Lichi"));
+        moduleActivities.add(new ModuleActivity(R.drawable.mango, "Mango"));
+        moduleActivities.add(new ModuleActivity(R.drawable.peach, "Peach"));
     }
 
     private class MyRecyclerAdapter extends RecyclerView.Adapter<MyViewHolder> {
@@ -54,11 +55,13 @@ public class MainActivity extends AppCompatActivity {
         public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             final ImageView imageView;
             final TextView textView;
+            final TextView textView1;
             final View view;
             //inflate for new view
             View rootView = getLayoutInflater().inflate(R.layout.activity_module, parent, false);
             imageView = rootView.findViewById(R.id.imageview_child_id);
             textView = rootView.findViewById(R.id.textview_child_id);
+            textView1 = rootView.findViewById(R.id.textview_child_id2);
             view = rootView;
             return new MyViewHolder(rootView);              //return the view holder object to be used in the onBindViewHolder method
         }
@@ -80,6 +83,7 @@ public class MainActivity extends AppCompatActivity {
 
         private final ImageView imageView;
         private final TextView textView;
+        private final TextView textView1;
         private final View view;
 
 
@@ -87,6 +91,7 @@ public class MainActivity extends AppCompatActivity {
             super(rootView);
             imageView = rootView.findViewById(R.id.imageview_child_id);
             textView = rootView.findViewById(R.id.textview_child_id);
+            textView1 = rootView.findViewById(R.id.textview_child_id2);
             view = rootView;
         }
     }
